@@ -69,10 +69,10 @@ font-size: 1em;
     <input type="text" id="jmeno" name="jmeno" required />
 
     <label for="datumNarozeni">Datum narození (dd.mm.yyyy)</label>
-    <input type="text" id="datumNarozeni" name="datumNarozeni" placeholder="dd.mm.yyyy" />
+    <input type="text" id="datumNarozeni" name="datumNarozeni" placeholder="dd.mm.yyyy" required/>
 
     <label for="statniObcanstvi">Státní občanství (ISO 3166)</label>
-    <select id="statniObcanstvi" name="statniObcanstvi">
+    <select id="statniObcanstvi" name="statniObcanstvi" required>
         <option value="">-- vyberte --</option>
 		<option value="ABW">ABW - Aruba</option>
 		<option value="AFG">AFG - Afghánistán</option>
@@ -333,7 +333,7 @@ font-size: 1em;
     </select>
 
     <label for="ucelPobytu">Účel pobytu</label>
-    <select id="ucelPobytu" name="ucelPobytu">
+    <select id="ucelPobytu" name="ucelPobytu" required>
 		<option value="">-- vyberte --</option>
 		<option value="00">00 - ZDRAVOTNÍ</option>
 		<option value="01">01 - OBCHODNÍ</option>
@@ -355,19 +355,19 @@ font-size: 1em;
     </select>
 
     <label for="ubytovaniOd">Datum ubytování od (dd.mm.yyyy)</label>
-    <input type="text" id="ubytovaniOd" name="ubytovaniOd" placeholder="dd.mm.yyyy" />
+    <input type="text" id="ubytovaniOd" name="ubytovaniOd" placeholder="dd.mm.yyyy" required/>
 
     <label for="ubytovaniDo">Datum ubytování do (dd.mm.yyyy)</label>
-    <input type="text" id="ubytovaniDo" name="ubytovaniDo" placeholder="dd.mm.yyyy" />
+    <input type="text" id="ubytovaniDo" name="ubytovaniDo" placeholder="dd.mm.yyyy" required/>
 
     <label for="cisloDokladu">Číslo cestovního dokladu</label>
-    <input type="text" id="cisloDokladu" name="cisloDokladu" />
+    <input type="text" id="cisloDokladu" name="cisloDokladu" required/>
 
     <label for="cisloViza">Číslo víza</label>
     <input type="text" id="cisloViza" name="cisloViza" />
 
     <label for="trvaleBydliste">Trvalé bydliště</label>
-    <input type="text" id="trvaleBydliste" name="trvaleBydliste" placeholder="Ulice, město, stát" />
+    <input type="text" id="trvaleBydliste" name="trvaleBydliste" placeholder="Ulice, město, stát" required/>
 
     <label for="poznamka">Poznámka</label>
     <textarea id="poznamka" name="poznamka" rows="4"></textarea>
@@ -440,6 +440,24 @@ font-size: 1em;
       document.getElementById('langSelect').addEventListener('change', function() {
         setLanguage(this.value);
       });
+	  
+	  const today = new Date();
+		const tomorrow = new Date(today);
+		tomorrow.setDate(today.getDate() + 1);
+		const threeDaysLater = new Date(today);
+		threeDaysLater.setDate(today.getDate() + 3);
+
+
+		function formatDate(date) {
+		const dd = String(date.getDate()).padStart(2, '0');
+		const mm = String(date.getMonth() + 1).padStart(2, '0');
+		const yyyy = date.getFullYear();
+		return dd + '.' + mm + '.' + yyyy;
+		}
+
+
+		document.getElementById('ubytovaniOd').value = formatDate(tomorrow);
+		document.getElementById('ubytovaniDo').value = formatDate(threeDaysLater);
     });
   </script>
 
