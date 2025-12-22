@@ -50,15 +50,15 @@ font-size: 1em;
   <div style="text-align:right;">
     <label for="langSelect">Language / Jazyk:</label>
     <select id="langSelect">
-      <option value="cs">Čeština</option>
       <option value="en">English</option>
       <option value="fr">Français</option>
       <option value="de">Deutsch</option>
+	  <option value="cs">Čeština</option>
     </select>
   </div>
 
   <h1 id="title">Ubytovací formulář</h1>
-
+  
   <form action="https://api.web3forms.com/submit" method="POST">
     <input type="hidden" name="access_key" value="27e321a7-4788-4b40-92ec-8d67fc78dd6e">
    
@@ -73,7 +73,6 @@ font-size: 1em;
 
     <label for="statniObcanstvi">Státní občanství (ISO 3166)</label>
     <select id="statniObcanstvi" name="statniObcanstvi" required>
-        <option value="">-- vyberte --</option>
 		<option value="ABW">ABW - Aruba</option>
 		<option value="AFG">AFG - Afghánistán</option>
 		<option value="AGO">AGO - Angola</option>
@@ -128,7 +127,7 @@ font-size: 1em;
 		<option value="CXR">CXR - Vánoční ostrov</option>
 		<option value="CYM">CYM - Kajmanské ostrovy</option>
 		<option value="CYP">CYP - Kypr</option>
-		<option value="DEU">DEU - Německo</option>
+		<option value="DEU" selected>DEU - Německo</option>
 		<option value="DJI">DJI - Džibutsko</option>
 		<option value="DMA">DMA - Dominika</option>
 		<option value="DNK">DNK - Dánsko</option>
@@ -334,7 +333,6 @@ font-size: 1em;
 
     <label for="ucelPobytu">Účel pobytu</label>
     <select id="ucelPobytu" name="ucelPobytu" required>
-		<option value="">-- vyberte --</option>
 		<option value="00">00 - ZDRAVOTNÍ</option>
 		<option value="01">01 - OBCHODNÍ</option>
 		<option value="02">02 - KULTURNÍ</option>
@@ -343,7 +341,7 @@ font-size: 1em;
 		<option value="05">05 - OFICIÁLNÍ (POLITICKÝ)</option>
 		<option value="06">06 - PODNIKÁNÍ-OSVČ</option>
 		<option value="07">07 - SPORTOVNÍ</option>
-		<option value="10">10 - TURISTIKA</option>
+		<option value="10" selected>10 - TURISTIKA</option>
 		<option value="11">11 - STUDIUM (školení,stáž)</option>
 		<option value="12">12 - TRANZIT(průjezd)</option>
 		<option value="13">13 - LETIŠTNÍ TRANZIT (průjezd)</option>
@@ -376,7 +374,92 @@ font-size: 1em;
     <button type="submit">Odeslat</button>
   </form>
 
-  <script>
+ <div id="version" style="text-align:center; margin-top:20px; font-size:0.9em; color:gray;">
+Version 1.0
+</div>
+
+<div class="registration-info" id="registration-info-fr">
+  <h3>Pourquoi l'enregistrement est requis</h3>
+  <p>
+    Tous les étrangers séjournant en République tchèque doivent <strong>déclarer leur lieu de séjour</strong> pour se conformer à la loi tchèque.
+    <ul>
+      <li><strong>Visiteurs hors UE :</strong> dans les 3 jours ouvrables suivant l'arrivée.</li>
+      <li><strong>Citoyens de l'UE séjournant plus de 30 jours :</strong> dans les 30 jours suivant l'arrivée.</li>
+    </ul>
+    Cela permet aux autorités de tenir des registres précis et d'assurer le respect de la réglementation locale.
+  </p>
+  <p>
+    Les données que vous fournissez lors de l'enregistrement seront transmises à <strong>Ubyport</strong> pour traitement et déclaration aux autorités.
+  </p>
+  <p>
+    <a href="https://ipc.gov.cz/en/obligations-for-foreigners/registration-upon-your-arrival-in-the-czech-republic/" target="_blank" rel="noopener noreferrer">Plus d'informations – Portail d'information pour étrangers</a><br>
+    <a href="https://policie.gov.cz/clanek/hlaseni-pobytu-cizincu.aspx" target="_blank" rel="noopener noreferrer">Plus d'informations – Police tchèque</a><br>
+    <a href="https://ubyport.pcr.cz/ubyport" target="_blank" rel="noopener noreferrer">Portail officiel Ubyport</a> (système de déclaration des séjours des étrangers)
+  </p>
+</div>
+
+<div class="registration-info" id="registration-info-de">
+  <h3>Warum die Registrierung erforderlich ist</h3>
+  <p>
+    Alle Ausländer, die sich in der Tschechischen Republik aufhalten, müssen <strong>ihren Aufenthaltsort melden</strong>, um das tschechische Gesetz einzuhalten.
+    <ul>
+      <li><strong>Nicht-EU-Besucher:</strong> innerhalb von 3 Arbeitstagen nach der Ankunft.</li>
+      <li><strong>EU-Bürger, die länger als 30 Tage bleiben:</strong> innerhalb von 30 Tagen nach der Ankunft.</li>
+    </ul>
+    Dies hilft den Behörden, genaue Aufzeichnungen zu führen und die Einhaltung der lokalen Vorschriften sicherzustellen.
+  </p>
+  <p>
+    Die von Ihnen bereitgestellten Daten werden während der Registrierung an <strong>Ubyport</strong> weitergeleitet, um sie zu verarbeiten und den Behörden zu melden.
+  </p>
+  <p>
+    <a href="https://ipc.gov.cz/en/obligations-for-foreigners/registration-upon-your-arrival-in-the-czech-republic/" target="_blank" rel="noopener noreferrer">Weitere Informationen – Informationsportal für Ausländer</a><br>
+    <a href="https://policie.gov.cz/clanek/hlaseni-pobytu-cizincu.aspx" target="_blank" rel="noopener noreferrer">Weitere Informationen – Tschechische Polizei</a><br>
+    <a href="https://ubyport.pcr.cz/ubyport" target="_blank" rel="noopener noreferrer">Offizielles Ubyport-Portal</a> (Meldesystem für Aufenthalte von Ausländern)
+  </p>
+</div>
+
+<div class="registration-info" id="registration-info-en">
+  <h3>Why Registration is Required</h3>
+  <p>
+    All foreigners staying in the Czech Republic must <strong>report their place of stay</strong> to comply with Czech law.
+    <ul>
+      <li><strong>Non-EU visitors:</strong> within 3 working days of arrival.</li>
+      <li><strong>EU citizens staying over 30 days:</strong> within 30 days.</li>
+    </ul>
+    This helps authorities maintain accurate records and ensures compliance with local regulations.
+  </p>
+  <p>
+    The data you provide during registration will be forwarded to <strong>Ubyport</strong> for processing and reporting to the authorities.
+  </p>
+  <p>
+    <a href="https://ipc.gov.cz/en/obligations-for-foreigners/registration-upon-your-arrival-in-the-czech-republic/" target="_blank" rel="noopener noreferrer">More info – Information Portal for Foreigners</a><br>
+    <a href="https://policie.gov.cz/clanek/hlaseni-pobytu-cizincu.aspx" target="_blank" rel="noopener noreferrer">More info – Czech Police</a><br>
+    <a href="https://ubyport.pcr.cz/ubyport" target="_blank" rel="noopener noreferrer">Official Ubyport portal</a> (reporting system for foreign stays) :contentReference[oaicite:0]{index=0}
+  </p>
+</div>
+
+<div class="registration-info" id="registration-info-cs">
+  <h3>Proč je registrace povinná</h3>
+  <p>
+    Všichni cizinci pobývající v České republice musí <strong>nahlásit své místo pobytu</strong> v souladu s českým právem.
+    <ul>
+      <li><strong>Cizinci mimo EU:</strong> do 3 pracovních dnů od příjezdu.</li>
+      <li><strong>Občané EU pobývající déle než 30 dní:</strong> do 30 dnů od příjezdu.</li>
+    </ul>
+    To pomáhá úřadům udržovat přesné záznamy a zajistit dodržování místních předpisů.
+  </p>
+  <p>
+    Údaje, které poskytnete při registraci, budou předány <strong>Ubyportu</strong> k dalšímu zpracování a nahlášení úřadům.
+  </p>
+  <p>
+    <a href="https://ipc.gov.cz/en/obligations-for-foreigners/registration-upon-your-arrival-in-the-czech-republic/" target="_blank" rel="noopener noreferrer">Více informací – Informační portál pro cizince</a><br>
+    <a href="https://policie.gov.cz/clanek/hlaseni-pobytu-cizincu.aspx" target="_blank" rel="noopener noreferrer">Více informací – Policie ČR</a><br>
+    <a href="https://ubyport.pcr.cz/ubyport" target="_blank" rel="noopener noreferrer">Oficiální portál Ubyport</a> (systém pro hlášení pobytů cizinců)
+  </p>
+</div>
+
+
+<script>
     const translations = {
       cs: { title: "Ubytovací formulář", prijmeni: "Příjmení", jmeno: "Jméno", datumNarozeni: "Datum narození (dd.mm.yyyy)", statniObcanstvi: "Státní občanství", ucelPobytu: "Účel pobytu", ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)", ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)", cisloDokladu: "Číslo cestovního dokladu", cisloViza: "Číslo víza", trvaleBydliste: "Trvalé bydliště", poznamka: "Poznámka", submit: "Odeslat", adresaPlacehodler:"Ulice, město, stát",
 	  ucelPobytuVycet: {
@@ -435,7 +518,13 @@ font-size: 1em;
 				option.text = code + ' - ' + t.ucelPobytuVycet[code];
 				}
 		}
+	  document.getElementById("registration-info-fr").style.display = 'none';
+	  document.getElementById("registration-info-de").style.display = 'none';
+	  document.getElementById("registration-info-en").style.display = 'none';
+	  document.getElementById("registration-info-"+lang).style.display = 'block';
     }
+	
+	setLanguage('en');
 
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('langSelect').addEventListener('change', function() {
@@ -466,10 +555,8 @@ font-size: 1em;
 		document.getElementById('ubytovaniOd').value = formatDate(tomorrow);
 		document.getElementById('ubytovaniDo').value = formatDate(threeDaysLater);
     });
+	
+		
   </script>
-
- <div id="version" style="text-align:center; margin-top:20px; font-size:0.9em; color:gray;">
-Version 1.0
-</div>
 </body>
 </html>
