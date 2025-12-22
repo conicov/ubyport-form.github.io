@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulář pobytu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      margin-top: 16px;
+      padding: 8px 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align:right;">
+    <label for="langSelect">Language / Jazyk:</label>
+    <select id="langSelect" onchange="setLanguage(this.value)">
+      <option value="cs">Čeština</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </div>
+
+  <h1 id="title">Ubytovací formulář</h1>
+
+  <form>
+    <label for="prijmeni">Příjmení</label>
+    <input type="text" id="prijmeni" name="prijmeni" required />
+
+    <label for="jmeno">Jméno</label>
+    <input type="text" id="jmeno" name="jmeno" required />
+
+    <label for="datumNarozeni">Datum narození (dd.mm.yyyy)</label>
+    <input type="text" id="datumNarozeni" name="datumNarozeni" placeholder="dd.mm.yyyy" />
+
+    <label for="statniObcanstvi">Státní občanství (ISO 3166)</label>
+    <select id="statniObcanstvi" name="statniObcanstvi">
+      <option value="">-- vyberte --</option>
+      <option value="CZ">CZ – Česká republika</option>
+      <option value="SK">SK – Slovensko</option>
+      <option value="DE">DE – Německo</option>
+      <option value="AT">AT – Rakousko</option>
+      <option value="PL">PL – Polsko</option>
+    </select>
+
+    <label for="ucelPobytu">Účel pobytu</label>
+    <select id="ucelPobytu" name="ucelPobytu">
+      <option value="">-- vyberte --</option>
+      <option value="up1">up1</option>
+      <option value="up2">up2</option>
+      <option value="up3">up3</option>
+    </select>
+
+    <label for="ubytovaniOd">Datum ubytování od (dd.mm.yyyy)</label>
+    <input type="text" id="ubytovaniOd" name="ubytovaniOd" placeholder="dd.mm.yyyy" />
+
+    <label for="ubytovaniDo">Datum ubytování do (dd.mm.yyyy)</label>
+    <input type="text" id="ubytovaniDo" name="ubytovaniDo" placeholder="dd.mm.yyyy" />
+
+    <label for="cisloDokladu">Číslo cestovního dokladu</label>
+    <input type="text" id="cisloDokladu" name="cisloDokladu" />
+
+    <label for="cisloViza">Číslo víza</label>
+    <input type="text" id="cisloViza" name="cisloViza" />
+
+    <label for="trvaleBydliste">Trvalé bydliště</label>
+    <input
+      type="text"
+      id="trvaleBydliste"
+      name="trvaleBydliste"
+      placeholder="Ulice, město, stát"
+    />
+
+    <label for="poznamka">Poznámka</label>
+    <textarea id="poznamka" name="poznamka" rows="4"></textarea>
+
+    <button type="submit">Odeslat</button>
+  
+  </form>
+
+  <script>
+    const translations = {
+      cs: {
+        title: "Ubytovací formulář",
+        prijmeni: "Příjmení",
+        jmeno: "Jméno",
+        datumNarozeni: "Datum narození (dd.mm.yyyy)",
+        statniObcanstvi: "Státní občanství",
+        ucelPobytu: "Účel pobytu",
+        ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)",
+        ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)",
+        cisloDokladu: "Číslo cestovního dokladu",
+        cisloViza: "Číslo víza",
+        trvaleBydliste: "Trvalé bydliště",
+        poznamka: "Poznámka",
+        submit: "Odeslat"
+      },
+      en: {
+        title: "Accommodation Form",
+        prijmeni: "Last name",
+        jmeno: "First name",
+        datumNarozeni: "Date of birth (dd.mm.yyyy)",
+        statniObcanstvi: "Citizenship",
+        ucelPobytu: "Purpose of stay",
+        ubytovaniOd: "Accommodation from (dd.mm.yyyy)",
+        ubytovaniDo: "Accommodation to (dd.mm.yyyy)",
+        cisloDokladu: "Travel document number",
+        cisloViza: "Visa number",
+        trvaleBydliste: "Permanent address",
+        poznamka: "Note",
+        submit: "Submit"
+      },
+      fr: {
+        title: "Formulaire d’hébergement",
+        prijmeni: "Nom de famille",
+        jmeno: "Prénom",
+        datumNarozeni: "Date de naissance (jj.mm.aaaa)",
+        statniObcanstvi: "Nationalité",
+        ucelPobytu: "Motif du séjour",
+        ubytovaniOd: "Hébergement du (jj.mm.aaaa)",
+        ubytovaniDo: "Hébergement au (jj.mm.aaaa)",
+        cisloDokladu: "Numéro du document de voyage",
+        cisloViza: "Numéro de visa",
+        trvaleBydliste: "Adresse permanente",
+        poznamka: "Remarque",
+        submit: "Envoyer"
+      },
+      de: {
+        title: "Unterkunftsformular",
+        prijmeni: "Nachname",
+        jmeno: "Vorname",
+        datumNarozeni: "Geburtsdatum (tt.mm.jjjj)",
+        statniObcanstvi: "Staatsangehörigkeit",
+        ucelPobytu: "Zweck des Aufenthalts",
+        ubytovaniOd: "Unterkunft von (tt.mm.jjjj)",
+        ubytovaniDo: "Unterkunft bis (tt.mm.jjjj)",
+        cisloDokladu: "Reisedokumentnummer",
+        cisloViza: "Visanummer",
+        trvaleBydliste: "Ständiger Wohnsitz",
+        poznamka: "Notiz",
+        submit: "Senden"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById("title").innerText = t.title;
+
+      document.querySelector("label[for=prijmeni]").innerText = t.prijmeni;
+      document.querySelector("label[for=jmeno]").innerText = t.jmeno;
+      document.querySelector("label[for=datumNarozeni]").innerText = t.datumNarozeni;
+      document.querySelector("label[for=statniObcanstvi]").innerText = t.statniObcanstvi;
+      document.querySelector("label[for=ucelPobytu]").innerText = t.ucelPobytu;
+      document.querySelector("label[for=ubytovaniOd]").innerText = t.ubytovaniOd;
+      document.querySelector("label[for=ubytovaniDo]").innerText = t.ubytovaniDo;
+      document.querySelector("label[for=cisloDokladu]").innerText
+</html>
