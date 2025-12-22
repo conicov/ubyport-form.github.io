@@ -31,9 +31,10 @@
 </head>
 <body>
 
+Version 3
   <div style="text-align:right;">
     <label for="langSelect">Language / Jazyk:</label>
-    <select id="langSelect" >
+    <select id="langSelect">
       <option value="cs">Čeština</option>
       <option value="en">English</option>
       <option value="fr">Français</option>
@@ -84,96 +85,25 @@
     <input type="text" id="cisloViza" name="cisloViza" />
 
     <label for="trvaleBydliste">Trvalé bydliště</label>
-    <input
-      type="text"
-      id="trvaleBydliste"
-      name="trvaleBydliste"
-      placeholder="Ulice, město, stát"
-    />
+    <input type="text" id="trvaleBydliste" name="trvaleBydliste" placeholder="Ulice, město, stát" />
 
     <label for="poznamka">Poznámka</label>
     <textarea id="poznamka" name="poznamka" rows="4"></textarea>
 
     <button type="submit">Odeslat</button>
-  
   </form>
 
   <script>
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const langSelect = document.getElementById('langSelect');
-    langSelect.addEventListener('change', function() {
-        setLanguage(this.value);
-    });
-});
-
     const translations = {
-      cs: {
-        title: "Ubytovací formulář",
-        prijmeni: "Příjmení",
-        jmeno: "Jméno",
-        datumNarozeni: "Datum narození (dd.mm.yyyy)",
-        statniObcanstvi: "Státní občanství",
-        ucelPobytu: "Účel pobytu",
-        ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)",
-        ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)",
-        cisloDokladu: "Číslo cestovního dokladu",
-        cisloViza: "Číslo víza",
-        trvaleBydliste: "Trvalé bydliště",
-        poznamka: "Poznámka",
-        submit: "Odeslat"
-      },
-      en: {
-        title: "Accommodation Form",
-        prijmeni: "Last name",
-        jmeno: "First name",
-        datumNarozeni: "Date of birth (dd.mm.yyyy)",
-        statniObcanstvi: "Citizenship",
-        ucelPobytu: "Purpose of stay",
-        ubytovaniOd: "Accommodation from (dd.mm.yyyy)",
-        ubytovaniDo: "Accommodation to (dd.mm.yyyy)",
-        cisloDokladu: "Travel document number",
-        cisloViza: "Visa number",
-        trvaleBydliste: "Permanent address",
-        poznamka: "Note",
-        submit: "Submit"
-      },
-      fr: {
-        title: "Formulaire d’hébergement",
-        prijmeni: "Nom de famille",
-        jmeno: "Prénom",
-        datumNarozeni: "Date de naissance (jj.mm.aaaa)",
-        statniObcanstvi: "Nationalité",
-        ucelPobytu: "Motif du séjour",
-        ubytovaniOd: "Hébergement du (jj.mm.aaaa)",
-        ubytovaniDo: "Hébergement au (jj.mm.aaaa)",
-        cisloDokladu: "Numéro du document de voyage",
-        cisloViza: "Numéro de visa",
-        trvaleBydliste: "Adresse permanente",
-        poznamka: "Remarque",
-        submit: "Envoyer"
-      },
-      de: {
-        title: "Unterkunftsformular",
-        prijmeni: "Nachname",
-        jmeno: "Vorname",
-        datumNarozeni: "Geburtsdatum (tt.mm.jjjj)",
-        statniObcanstvi: "Staatsangehörigkeit",
-        ucelPobytu: "Zweck des Aufenthalts",
-        ubytovaniOd: "Unterkunft von (tt.mm.jjjj)",
-        ubytovaniDo: "Unterkunft bis (tt.mm.jjjj)",
-        cisloDokladu: "Reisedokumentnummer",
-        cisloViza: "Visanummer",
-        trvaleBydliste: "Ständiger Wohnsitz",
-        poznamka: "Notiz",
-        submit: "Senden"
-      }
+      cs: { title: "Ubytovací formulář", prijmeni: "Příjmení", jmeno: "Jméno", datumNarozeni: "Datum narození (dd.mm.yyyy)", statniObcanstvi: "Státní občanství", ucelPobytu: "Účel pobytu", ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)", ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)", cisloDokladu: "Číslo cestovního dokladu", cisloViza: "Číslo víza", trvaleBydliste: "Trvalé bydliště", poznamka: "Poznámka", submit: "Odeslat"},
+      en: { title: "Accommodation Form", prijmeni: "Last name", jmeno: "First name", datumNarozeni: "Date of birth (dd.mm.yyyy)", statniObcanstvi: "Citizenship", ucelPobytu: "Purpose of stay", ubytovaniOd: "Accommodation from (dd.mm.yyyy)", ubytovaniDo: "Accommodation to (dd.mm.yyyy)", cisloDokladu: "Travel document number", cisloViza: "Visa number", trvaleBydliste: "Permanent address", poznamka: "Note", submit: "Submit"},
+      fr: { title: "Formulaire d’hébergement", prijmeni: "Nom de famille", jmeno: "Prénom", datumNarozeni: "Date de naissance (jj.mm.aaaa)", statniObcanstvi: "Nationalité", ucelPobytu: "Motif du séjour", ubytovaniOd: "Hébergement du (jj.mm.aaaa)", ubytovaniDo: "Hébergement au (jj.mm.aaaa)", cisloDokladu: "Numéro du document de voyage", cisloViza: "Numéro de visa", trvaleBydliste: "Adresse permanente", poznamka: "Remarque", submit: "Envoyer"},
+      de: { title: "Unterkunftsformular", prijmeni: "Nachname", jmeno: "Vorname", datumNarozeni: "Geburtsdatum (tt.mm.jjjj)", statniObcanstvi: "Staatsangehörigkeit", ucelPobytu: "Zweck des Aufenthalts", ubytovaniOd: "Unterkunft von (tt.mm.jjjj)", ubytovaniDo: "Unterkunft bis (tt.mm.jjjj)", cisloDokladu: "Reisedokumentnummer", cisloViza: "Visanummer", trvaleBydliste: "Ständiger Wohnsitz", poznamka: "Notiz", submit: "Senden"}
     };
 
     function setLanguage(lang) {
       const t = translations[lang];
       document.getElementById("title").innerText = t.title;
-
       document.querySelector("label[for=prijmeni]").innerText = t.prijmeni;
       document.querySelector("label[for=jmeno]").innerText = t.jmeno;
       document.querySelector("label[for=datumNarozeni]").innerText = t.datumNarozeni;
@@ -181,5 +111,19 @@
       document.querySelector("label[for=ucelPobytu]").innerText = t.ucelPobytu;
       document.querySelector("label[for=ubytovaniOd]").innerText = t.ubytovaniOd;
       document.querySelector("label[for=ubytovaniDo]").innerText = t.ubytovaniDo;
-      document.querySelector("label[for=cisloDokladu]").innerText
+      document.querySelector("label[for=cisloDokladu]").innerText = t.cisloDokladu;
+      document.querySelector("label[for=cisloViza]").innerText = t.cisloViza;
+      document.querySelector("label[for=trvaleBydliste]").innerText = t.trvaleBydliste;
+      document.querySelector("label[for=poznamka]").innerText = t.poznamka;
+      document.querySelector("button[type=submit]").innerText = t.submit;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('langSelect').addEventListener('change', function() {
+        setLanguage(this.value);
+      });
+    });
+  </script>
+
+</body>
 </html>
