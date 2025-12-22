@@ -44,7 +44,9 @@ Version 4
 
   <h1 id="title">Ubytovací formulář</h1>
 
-  <form>
+  <form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="27e321a7-4788-4b40-92ec-8d67fc78dd6e">
+   
     <label for="prijmeni">Příjmení</label>
     <input type="text" id="prijmeni" name="prijmeni" required />
 
@@ -361,7 +363,7 @@ Version 4
   <script>
     const translations = {
       cs: { title: "Ubytovací formulář", prijmeni: "Příjmení", jmeno: "Jméno", datumNarozeni: "Datum narození (dd.mm.yyyy)", statniObcanstvi: "Státní občanství", ucelPobytu: "Účel pobytu", ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)", ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)", cisloDokladu: "Číslo cestovního dokladu", cisloViza: "Číslo víza", trvaleBydliste: "Trvalé bydliště", poznamka: "Poznámka", submit: "Odeslat", adresaPlacehodler:"Ulice, město, stát",
-	  ucelPobytu: {
+	  ucelPobytuVycet: {
 "00": "ZDRAVOTNÍ", "01": "OBCHODNÍ", "02": "KULTURNÍ", "03": "NÁVŠTĚVA RODINY NEBO PŘÁTEL",
 "04": "POZVÁNÍ", "05": "OFICIÁLNÍ (POLITICKÝ)", "06": "PODNIKÁNÍ-OSVČ", "07": "SPORTOVNÍ",
 "10": "TURISTIKA", "11": "STUDIUM (školení,stáž)", "12": "TRANZIT(průjezd)", "13": "LETIŠTNÍ TRANZIT (průjezd)",
@@ -369,7 +371,7 @@ Version 4
 "99": "JINÉ / OSTATNÍ"
 }},
       en: { title: "Accommodation Form", prijmeni: "Last name", jmeno: "First name", datumNarozeni: "Date of birth (dd.mm.yyyy)", statniObcanstvi: "Citizenship", ucelPobytu: "Purpose of stay", ubytovaniOd: "Accommodation from (dd.mm.yyyy)", ubytovaniDo: "Accommodation to (dd.mm.yyyy)", cisloDokladu: "Travel document number", cisloViza: "Visa number", trvaleBydliste: "Permanent address", poznamka: "Note", submit: "Submit", adresaPlacehodler:"Street, City, Country",
-	  ucelPobytu: {
+	  ucelPobytuVycet: {
 "00": "Health", "01": "Business", "02": "Cultural", "03": "Visit Family or Friends",
 "04": "Invitation", "05": "Official (Political)", "06": "Business-Self Employed", "07": "Sports",
 "10": "Tourism", "11": "Study (Training, Internship)", "12": "Transit", "13": "Airport Transit",
@@ -377,7 +379,7 @@ Version 4
 "99": "Other"
 }},
       fr: { title: "Formulaire d’hébergement", prijmeni: "Nom de famille", jmeno: "Prénom", datumNarozeni: "Date de naissance (jj.mm.aaaa)", statniObcanstvi: "Nationalité", ucelPobytu: "Motif du séjour", ubytovaniOd: "Hébergement du (jj.mm.aaaa)", ubytovaniDo: "Hébergement au (jj.mm.aaaa)", cisloDokladu: "Numéro du document de voyage", cisloViza: "Numéro de visa", trvaleBydliste: "Adresse permanente", poznamka: "Remarque", submit: "Envoyer", adresaPlacehodler:"Rue, Ville, Pays",
-	  ucelPobytu: {
+	  ucelPobytuVycet: {
 "00": "Santé", "01": "Affaires", "02": "Culturel", "03": "Visite famille ou amis",
 "04": "Invitation", "05": "Officiel (Politique)", "06": "Affaires - Indépendant", "07": "Sport",
 "10": "Tourisme", "11": "Études (Formation, Stage)", "12": "Transit", "13": "Transit Aéroport",
@@ -385,7 +387,7 @@ Version 4
 "99": "Autre"
 }},
       de: { title: "Unterkunftsformular", prijmeni: "Nachname", jmeno: "Vorname", datumNarozeni: "Geburtsdatum (tt.mm.jjjj)", statniObcanstvi: "Staatsangehörigkeit", ucelPobytu: "Zweck des Aufenthalts", ubytovaniOd: "Unterkunft von (tt.mm.jjjj)", ubytovaniDo: "Unterkunft bis (tt.mm.jjjj)", cisloDokladu: "Reisedokumentnummer", cisloViza: "Visanummer", trvaleBydliste: "Ständiger Wohnsitz", poznamka: "Notiz", submit: "Senden", adresaPlacehodler:"Straße, Stadt, Land",
-	  ucelPobytu: {
+	  ucelPobytuVycet: {
 "00": "Gesundheit", "01": "Geschäftlich", "02": "Kulturell", "03": "Familien- oder Freundesbesuch",
 "04": "Einladung", "05": "Offiziell (Politisch)", "06": "Selbstständiges Unternehmertum", "07": "Sport",
 "10": "Tourismus", "11": "Studium (Schulung, Praktikum)", "12": "Transit", "13": "Flughafen-Transit",
@@ -412,10 +414,10 @@ Version 4
 	  document.getElementById('trvaleBydliste').placeholder = t.adresaPlacehodler
 	  const ucelSelect = document.getElementById('ucelPobytu');
 		for (const option of ucelSelect.options) {
-		if(t.ucelPobytu[option.value]) {
-		const code = option.value;
-		option.text = code + ' - ' + t.ucelPobytu[code];
-		}
+			if(t.ucelPobytuVycet[option.value]) {
+				const code = option.value;
+				option.text = code + ' - ' + t.ucelPobytuVycet[code];
+				}
 		}
     }
 
