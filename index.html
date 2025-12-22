@@ -353,7 +353,8 @@ font-size: 1em;
 		<option value="93">93 - ADS VÍZUM- MEMORANDUM O POROZUMĚNÍ</option>
 		<option value="99">99 - JINÉ / OSTATNÍ</option>
     </select>
-
+	<input type="hidden" id="ucelPobytuValue" name="ucelPobytuValue" />
+	
     <label for="ubytovaniOd">Datum ubytování od (dd.mm.yyyy)</label>
     <input type="text" id="ubytovaniOd" name="ubytovaniOd" placeholder="dd.mm.yyyy" required/>
 
@@ -440,6 +441,12 @@ font-size: 1em;
       document.getElementById('langSelect').addEventListener('change', function() {
         setLanguage(this.value);
       });
+	  
+	  document.getElementById('ucelPobytu').addEventListener('change', function() {
+		const t = translations[cs];
+		const code = this.value;
+		document.getElementById('ucelPobytuValue').value = t.ucelPobytuVycet[code] ;
+	  });
 	  
 	  const today = new Date();
 		const tomorrow = new Date(today);
