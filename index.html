@@ -127,7 +127,7 @@ font-size: 1em;
 		<option value="CXR">CXR - Vánoční ostrov</option>
 		<option value="CYM">CYM - Kajmanské ostrovy</option>
 		<option value="CYP">CYP - Kypr</option>
-		<option value="DEU" selected>DEU - Německo</option>
+		<option value="DEU">DEU - Německo</option>
 		<option value="DJI">DJI - Džibutsko</option>
 		<option value="DMA">DMA - Dominika</option>
 		<option value="DNK">DNK - Dánsko</option>
@@ -372,7 +372,18 @@ font-size: 1em;
     <textarea id="poznamka" name="poznamka" rows="4"></textarea>
 
     <button type="submit">Odeslat</button>
+	<button type="button" id="copyTextBtn">
+		Zkopírovat údaje jako text
+	</button>
   </form>
+  
+  <label for="textPreview">Text to share</label>
+	<textarea
+	  id="textPreview"
+	  rows="14"
+	  readonly
+	  style="width:100%; font-family: monospace;"
+	></textarea>
 
  <div id="version" style="text-align:center; margin-top:20px; font-size:0.9em; color:gray;">
 Version 1.0
@@ -445,7 +456,7 @@ Version 1.0
 
 <script>
     const translations = {
-      cs: { title: "Ubytovací formulář", prijmeni: "Příjmení", jmeno: "Jméno", datumNarozeni: "Datum narození (dd.mm.yyyy)", statniObcanstvi: "Státní občanství", ucelPobytu: "Účel pobytu", ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)", ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)", cisloDokladu: "Číslo cestovního dokladu", cisloViza: "Číslo víza", trvaleBydliste: "Trvalé bydliště", poznamka: "Poznámka", submit: "Odeslat", adresaPlacehodler:"Ulice, město, stát",
+      cs: { title: "Ubytovací formulář", prijmeni: "Příjmení", jmeno: "Jméno", datumNarozeni: "Datum narození (dd.mm.yyyy)", statniObcanstvi: "Státní občanství", ucelPobytu: "Účel pobytu", ubytovaniOd: "Datum ubytování od (dd.mm.yyyy)", ubytovaniDo: "Datum ubytování do (dd.mm.yyyy)", cisloDokladu: "Číslo cestovního dokladu", cisloViza: "Číslo víza", trvaleBydliste: "Trvalé bydliště", poznamka: "Poznámka", submit: "Odeslat", adresaPlacehodler:"Ulice, město, stát", copyTextBtn:"Zkopírovat údaje do schranky",
 	  ucelPobytuVycet: {
 "00": "ZDRAVOTNÍ", "01": "OBCHODNÍ", "02": "KULTURNÍ", "03": "NÁVŠTĚVA RODINY NEBO PŘÁTEL",
 "04": "POZVÁNÍ", "05": "OFICIÁLNÍ (POLITICKÝ)", "06": "PODNIKÁNÍ-OSVČ", "07": "SPORTOVNÍ",
@@ -453,7 +464,7 @@ Version 1.0
 "27": "ZAMĚSTNÁNÍ", "38": "ZÁCVIK", "52": "SEZÓNNÍ ZAMĚSTNÁNÍ", "93": "ADS VÍZUM- MEMORANDUM O POROZUMĚNÍ",
 "99": "JINÉ / OSTATNÍ"
 }},
-      en: { title: "Accommodation Form", prijmeni: "Last name", jmeno: "First name", datumNarozeni: "Date of birth (dd.mm.yyyy)", statniObcanstvi: "Citizenship", ucelPobytu: "Purpose of stay", ubytovaniOd: "Accommodation from (dd.mm.yyyy)", ubytovaniDo: "Accommodation to (dd.mm.yyyy)", cisloDokladu: "Travel document number", cisloViza: "Visa number", trvaleBydliste: "Permanent address", poznamka: "Note", submit: "Submit", adresaPlacehodler:"Street, City, Country",
+      en: { title: "Accommodation Form", prijmeni: "Last name", jmeno: "First name", datumNarozeni: "Date of birth (dd.mm.yyyy)", statniObcanstvi: "Citizenship", ucelPobytu: "Purpose of stay", ubytovaniOd: "Accommodation from (dd.mm.yyyy)", ubytovaniDo: "Accommodation to (dd.mm.yyyy)", cisloDokladu: "Travel document number", cisloViza: "Visa number", trvaleBydliste: "Permanent address", poznamka: "Note", submit: "Submit", adresaPlacehodler:"Street, City, Country", copyTextBtn:"Copy data to clipboard",
 	  ucelPobytuVycet: {
 "00": "Health", "01": "Business", "02": "Cultural", "03": "Visit Family or Friends",
 "04": "Invitation", "05": "Official (Political)", "06": "Business-Self Employed", "07": "Sports",
@@ -461,7 +472,7 @@ Version 1.0
 "27": "Employment", "38": "Training", "52": "Seasonal Employment", "93": "ADS Visa - Memorandum of Understanding",
 "99": "Other"
 }},
-      fr: { title: "Formulaire d’hébergement", prijmeni: "Nom de famille", jmeno: "Prénom", datumNarozeni: "Date de naissance (jj.mm.aaaa)", statniObcanstvi: "Nationalité", ucelPobytu: "Motif du séjour", ubytovaniOd: "Hébergement du (jj.mm.aaaa)", ubytovaniDo: "Hébergement au (jj.mm.aaaa)", cisloDokladu: "Numéro du document de voyage", cisloViza: "Numéro de visa", trvaleBydliste: "Adresse permanente", poznamka: "Remarque", submit: "Envoyer", adresaPlacehodler:"Rue, Ville, Pays",
+      fr: { title: "Formulaire d’hébergement", prijmeni: "Nom de famille", jmeno: "Prénom", datumNarozeni: "Date de naissance (jj.mm.aaaa)", statniObcanstvi: "Nationalité", ucelPobytu: "Motif du séjour", ubytovaniOd: "Hébergement du (jj.mm.aaaa)", ubytovaniDo: "Hébergement au (jj.mm.aaaa)", cisloDokladu: "Numéro du document de voyage", cisloViza: "Numéro de visa", trvaleBydliste: "Adresse permanente", poznamka: "Remarque", submit: "Envoyer", adresaPlacehodler:"Rue, Ville, Pays", copyTextBtn:"Copier les données le presse-papiers”",
 	  ucelPobytuVycet: {
 "00": "Santé", "01": "Affaires", "02": "Culturel", "03": "Visite famille ou amis",
 "04": "Invitation", "05": "Officiel (Politique)", "06": "Affaires - Indépendant", "07": "Sport",
@@ -469,7 +480,7 @@ Version 1.0
 "27": "Emploi", "38": "Formation", "52": "Emploi saisonnier", "93": "Visa ADS - Protocole d'entente",
 "99": "Autre"
 }},
-      de: { title: "Unterkunftsformular", prijmeni: "Nachname", jmeno: "Vorname", datumNarozeni: "Geburtsdatum (tt.mm.jjjj)", statniObcanstvi: "Staatsangehörigkeit", ucelPobytu: "Zweck des Aufenthalts", ubytovaniOd: "Unterkunft von (tt.mm.jjjj)", ubytovaniDo: "Unterkunft bis (tt.mm.jjjj)", cisloDokladu: "Reisedokumentnummer", cisloViza: "Visanummer", trvaleBydliste: "Ständiger Wohnsitz", poznamka: "Notiz", submit: "Senden", adresaPlacehodler:"Straße, Stadt, Land",
+      de: { title: "Unterkunftsformular", prijmeni: "Nachname", jmeno: "Vorname", datumNarozeni: "Geburtsdatum (tt.mm.jjjj)", statniObcanstvi: "Staatsangehörigkeit", ucelPobytu: "Zweck des Aufenthalts", ubytovaniOd: "Unterkunft von (tt.mm.jjjj)", ubytovaniDo: "Unterkunft bis (tt.mm.jjjj)", cisloDokladu: "Reisedokumentnummer", cisloViza: "Visanummer", trvaleBydliste: "Ständiger Wohnsitz", poznamka: "Notiz", submit: "Senden", adresaPlacehodler:"Straße, Stadt, Land", copyTextBtn:"Daten in die Zwischenablage kopieren",
 	  ucelPobytuVycet: {
 "00": "Gesundheit", "01": "Geschäftlich", "02": "Kulturell", "03": "Familien- oder Freundesbesuch",
 "04": "Einladung", "05": "Offiziell (Politisch)", "06": "Selbstständiges Unternehmertum", "07": "Sport",
@@ -507,6 +518,7 @@ Version 1.0
 	  document.getElementById("registration-info-en").style.display = 'none';
 	  document.getElementById("registration-info-cs").style.display = 'none';
 	  document.getElementById("registration-info-"+lang).style.display = 'block';
+	  document.getElementById("copyTextBtn").innerText = t.copyTextBtn;
     }
 	
 	setLanguage('en');
@@ -547,9 +559,86 @@ Version 1.0
 
 		document.getElementById('ubytovaniOd').value = formatDate(tomorrow);
 		document.getElementById('ubytovaniDo').value = formatDate(threeDaysLater);
-    });
-	
-		
+    });		
   </script>
+  <script>
+const form = document.querySelector('form');
+const preview = document.getElementById('textPreview');
+const copyBtn = document.getElementById('copyTextBtn');
+
+function getSelectText(name) {
+  const sel = form.querySelector(`[name="${name}"]`);
+  return sel ? sel.options[sel.selectedIndex].text : '';
+}
+
+function validateForm() {
+  let valid = true;
+
+  // remove previous error markers
+  form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+  form.querySelectorAll('[required]').forEach(field => {
+    if (!field.value || field.value.trim() === '') {
+      field.classList.add('error');
+      valid = false;
+    }
+  });
+
+  return valid;
+}
+
+function buildText() {
+  const data = new FormData(form);
+
+  return `LAST NAME: ${data.get('prijmeni')}
+FIRST NAME: ${data.get('jmeno')}
+DATE OF BIRTH: ${data.get('datumNarozeni')}
+
+CITIZENSHIP: ${getSelectText('statniObcanstvi')}
+PURPOSE OF STAY: ${getSelectText('ucelPobytu')}
+
+ACCOMMODATION FROM: ${data.get('ubytovaniOd')}
+ACCOMMODATION TO: ${data.get('ubytovaniDo')}
+
+TRAVEL DOCUMENT NUMBER: ${data.get('cisloDokladu')}
+VISA NUMBER: ${data.get('cisloViza') || '-'}
+
+PERMANENT ADDRESS:
+${data.get('trvaleBydliste')}
+
+NOTE:
+${data.get('poznamka') || '-'}`;
+}
+
+function updatePreview() {
+  if (!validateForm()) {
+    preview.value = '⚠️ Please fill all mandatory fields.';
+    return;
+  }
+  preview.value = buildText();
+}
+
+// Update preview when user edits form
+form.querySelectorAll('input, select, textarea').forEach(el => {
+  el.addEventListener('input', updatePreview);
+  el.addEventListener('change', updatePreview);
+});
+
+// Copy button logic
+copyBtn.addEventListener('click', () => {
+  if (!validateForm()) {
+    alert('Some fields are missing.');
+    return;
+  }
+
+  preview.select();
+  navigator.clipboard.writeText(preview.value);
+  alert('The text has been copied to the clipboard. You can paste it to the airbnb app as a message.');
+});
+
+// Initial fill (important for default selected values)
+updatePreview();
+</script>
+
 </body>
 </html>
